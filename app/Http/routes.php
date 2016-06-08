@@ -142,6 +142,14 @@ Route::group(['middleware' => ['web']], function () {
             'as' => 'admin.pedidos',
             'uses' => 'AdminController@getPedidos'
         ]);
+        Route::put('admin/pedido/pago/{id}', [
+        'as' => 'admin.pedido.pago',
+        'uses' => 'AdminController@putPedidoPago'
+        ]);
+        Route::put('admin/pedido/finalizado/{id}', [
+            'as' => 'admin.pedido.finalizado',
+            'uses' => 'AdminController@putPedidoFinalizado'
+        ]);
         Route::get('admin/listar', [
           'as' => 'admin.listar',
           'uses' => 'AdminController@getListar'
