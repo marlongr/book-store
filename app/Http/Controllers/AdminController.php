@@ -46,6 +46,10 @@ class AdminController extends Controller {
     public function getListar() {
         //if($users->role == 'cliente'){
             $models['users'] = User::all();
+            $users = DB::table('users')
+            ->orderByRaw('lower(name)')
+            ->get();
+            $models['users'] = $users;
             return view('admin.lista-clientes',$models);
        // }
         
@@ -61,7 +65,8 @@ class AdminController extends Controller {
         if ($id == null) {
             if ($req->has('status') == false) {
                 $models['tipoVisao'] = 'Todos';
-                $models['pedidos'] = Venda::all();
+                $models['pedidos'] = Venda::orderBy('data_venda','desc')->get();
+                
             } else {
                 if ($req->status == 'nao-pagos') {
                     $models['tipoVisao'] = 'Não Pagos';
@@ -74,6 +79,11 @@ class AdminController extends Controller {
                     $models['pedidos'] = Venda::finalizadas()->get();
                 }
             }
+
+           /* $pedidos = DB::table('vendas')
+                ->orderBy('data_venda','asc')
+                ->get();
+                $models['pedidos'] = $pedidos;*/
             return view('admin.pedidos-listar', $models);
         }
 
