@@ -8,6 +8,7 @@ use Shoppvel\Models\Carrinho;
 use Shoppvel\Models\Produto;
 use Shoppvel\Models\Venda;
 use Shoppvel\Models\VendaItem ;
+use Shoppvel\Models\User ;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\DB;
@@ -24,6 +25,36 @@ class AdminController extends Controller {
     
     public function getPerfil() {
         return view('admin.perfil');
+    }
+    
+    function getBuscar(Request $request) {
+        $this->validate($request, [
+            'termo-pesquisa' => 'required|filled'
+                ]
+        );
+
+        $termo = $request->get('termo-pesquisa');
+
+        $users = User::where('name', 'LIKE', '%' . $termo . '%')
+                ->paginate(10);
+                
+        //$produtos->setPath('buscar/'.$termo);
+        $models['users'] = $users;
+        $models['termo'] = $termo;
+        return view('admin.busca-clientes', $models);
+    }
+    public function getListar() {
+        //if($users->role == 'cliente'){
+            $models['users'] = User::all();
+            return view('admin.lista-clientes',$models);
+       // }
+        
+    }
+
+    public function getPedidosCliente(Request $req, $id) {
+       // $models['vendas'] = Venda::find($user_id);
+        $models['pedido'] = User::find($id);
+        return view('admin.lista-pedidos', $models);
     }
     
     public function getPedidos(Request $req, $id = null) {
