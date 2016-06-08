@@ -68,6 +68,11 @@
                             </a>
                         </li>
                         <li>
+                            <a href="{{route('admin.listar')}}">
+                                Listar Clientes
+                            </a>
+                        </li>
+                        <li>
                             <a href="{{route('admin.perfil')}}">
                                 Perfil
                             </a>
