@@ -1,23 +1,24 @@
-@extends('layouts.cliente')
-
-@section('conteudo')
-<h2>Perfil Editar- {{Auth::user()->name}}</h3>
-
+@extends('app')
+@section('content')
  <div class="container">
+ <h1>Edição de cliente</h1>
 
-		{!! Form::open(['url' =>"cliente/Auth::user()->id/update" , 'method'=>'put']) !!}
+		{!! Form::open(['url' =>"clientes/$clientes->id_cliente/update" , 'method'=>'put']) !!}
  
 <div class="form-group">
-    {!! Form::label('name', 'Nome:', ['class' => 'control-label']) !!}
-    {!! Form::text('nome', $user->nome, ['class'=>'form-control']) !!}
+    {!! Form::label('nome', 'Nome:', ['class' => 'control-label']) !!}
+    {!! Form::text('nome', $clientes->nome, ['class'=>'form-control']) !!}
 </div>
- 
+<div class="form-group">
+    {!! Form::label('cpf', 'Cpf:', ['class' => 'control-label']) !!}
+    {!! Form::text('cpf', $clientes->cpf, ['class'=>'form-control']) !!}
+</div>
 <div class="form-group">
     {!! Form::label('email', 'Email:', ['class' => 'control-label']) !!}
-    {!! Form::textarea('email', $user->email, ['class'=>'form-control']) !!}
+    {!! Form::text('email', $clientes->email, ['class'=>'form-control']) !!}
 </div>
  
-{!! Form::submit('Alterar perfil', ['class' => 'btn btn-primary']) !!}
+{!! Form::submit('Alterar', ['class' => 'btn btn-primary']) !!}
  
 {!! Form::close() !!}
 
