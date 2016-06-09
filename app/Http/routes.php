@@ -162,6 +162,22 @@ Route::group(['middleware' => ['web']], function () {
             'as' => 'admin.perfil',
             'uses' => 'AdminController@getPerfil'
         ]);
+
+
+        // rotas arruamdas do listar pagos/finalizado/pendentes
+        
+        Route::get('admin/pedidos', [
+            'as' => 'admin.pedido',
+            'uses' => 'AdminController@getPedidos'
+        ]);
+        Route::get('faculdade/hamburgueria/public/admin/pedidos/{id?}', [
+            'as' => 'admin.pedidos',
+            'uses' => 'AdminController@getPedidos'
+        ]);
+        Route::get('admin/perfil', [
+            'as' => 'admin.perfil',
+            'uses' => 'AdminController@getPerfil'
+        ]);
         
     });
 });

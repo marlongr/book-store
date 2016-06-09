@@ -101,7 +101,7 @@ class AdminController extends Controller {
         $pedido->pago = TRUE;
         $pedido->save();
         
-        return redirect()->route('admin.pedidos', '?status=pagos')->with('mensagens-sucesso', 'Pedido atualizado');
+        return redirect()->route('admin.pedidos', 'status=pagos')->with('mensagens-sucesso', 'Pedido atualizado');
     }
     
     public function putPedidoFinalizado(Request $request, $id) {
@@ -114,6 +114,6 @@ class AdminController extends Controller {
         $pedido->enviado = TRUE;
         $pedido->save();
         
-        return redirect()->route('admin.pedidos', '?status=finalizados')->with('mensagens-sucesso', 'Pedido finalizado');
+        return redirect()->route('admin.pedidos', 'status=finalizados')->with('mensagens-sucesso', 'Pedido finalizado');
     }
 }
