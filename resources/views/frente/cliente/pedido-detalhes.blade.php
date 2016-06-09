@@ -55,6 +55,9 @@
         <tr>
             <th></th>
             <th>Produto</th>
+            <th class="text-right">Categoria</th>
+            <th class="text-right">Cliente</th>
+            <th class="text-right">Endereço</th>
             <th class="text-right">Quantidade</th>
             <th class="text-right">Valor Unitário</th>
             <th class="text-right">Total do item</th>
@@ -71,6 +74,16 @@
                 <a href="{{route('produto.detalhes', $item->produto->id)}}">
                     {{$item->produto->nome}}
                 </a>
+            </td>
+            <td>
+                {{$item->produto->categoria->nome}}
+                </a>
+            </td>
+            <td class="text-right">
+                {{$pedidos->name}}
+            </td>
+            <td class="text-right">
+                {{$pedidos->endereco}}
             </td>
             <td class="text-right">
                 {{$item->qtde}}
