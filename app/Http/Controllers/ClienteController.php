@@ -47,6 +47,8 @@ class ClienteController extends Controller {
         }
 
         $models['pedido'] = Venda::find($id);
+        $models['pedidos'] = \Auth::user()
+                                    ->first();
         return view('frente.cliente.pedido-detalhes', $models);
     }
     
