@@ -25,7 +25,7 @@ class User extends Authenticatable {
     ];
 
     public function vendas() {
-        return $this->hasMany(Models\Venda::class);
+        return $this->hasMany(Models\Venda::class)->orderBy('valor_venda','desc');
     }
     
     public function vendasNaoPagas() {
