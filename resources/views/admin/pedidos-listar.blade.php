@@ -6,6 +6,7 @@
     <thead>
         <tr>
             <th>Data</th>
+            <th class="text-right">Código do Pedido</th>
             <th class="text-right">Cliente</th>
             <th class="text-right">Valor</th>
             <th class="text-right">Método de Pagamento</th>
@@ -23,6 +24,9 @@
                 <a href="{{route('admin.pedidos', $pedido->id)}}">
                     {{$pedido->data_venda->format('d/m/Y H:i')}}
                 </a>
+            </td>
+            <td>
+                {{$pedido->id}}
             </td>
             <td>
                 {{$pedido->user->name}}
