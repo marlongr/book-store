@@ -16,7 +16,6 @@
         <tr>
             <th class="text-left">Nome</th>
             <th class="text-left">Tipo</th>
-            <th class="text-left">Pedidos</th>
         </tr>
     </thead>
     <tbody>
@@ -28,9 +27,6 @@
                 </td>
                 <td>
                     {{$user->role}}
-                </td>
-                <td>
-                    <a href="{{route('admin.lista-pedidos', $user->id)}}">Pedidos</a>
                 </td>
             </tr>
         @endforeach
